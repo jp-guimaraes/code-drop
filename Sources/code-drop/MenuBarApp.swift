@@ -20,7 +20,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         let dirs = Store.load()
 
         if dirs.isEmpty {
-            let empty = NSMenuItem(title: "Nenhum diretório salvo", action: nil, keyEquivalent: "")
+            let empty = NSMenuItem(title: L10n.noDirectories, action: nil, keyEquivalent: "")
             empty.isEnabled = false
             menu.addItem(empty)
         }
@@ -46,10 +46,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
 
         menu.addItem(.separator())
-        menu.addItem(item("Adicionar pasta…", #selector(addFolder)))
-        menu.addItem(item("Abrir arquivo de config", #selector(openConfig)))
+        menu.addItem(item(L10n.addFolder, #selector(addFolder)))
+        menu.addItem(item(L10n.openConfig, #selector(openConfig)))
         menu.addItem(.separator())
-        menu.addItem(item("Sair", #selector(quit), key: "q"))
+        menu.addItem(item(L10n.quit, #selector(quit), key: "q"))
     }
 
     private func item(_ title: String, _ action: Selector, key: String = "") -> NSMenuItem {
@@ -81,7 +81,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     @objc private func openConfig() {
-        if !FileManager.default.fileExists(atPath: Store.fileURL.path) { try? Store.save(Store.load()) }
+        if !FileManager.default.fileExists(atPath: Store.fileURL.path) { try? Store.save(Store.config()) }
         openInVSCode(Store.fileURL.path)
     }
 

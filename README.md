@@ -20,6 +20,19 @@ code-drop list
 code-drop remove .       # removes it again
 ```
 
-`add`, `remove` (`rm`), `list` (`ls`) and `help` are reserved words; use `./list` to save a directory with one of those names.
+`add`, `remove` (`rm`), `list` (`ls`), `lang` and `help` are reserved words; use `./list` to save a directory with one of those names.
 
-Saved directories live in `~/.config/code-drop/dirs.json`; the menu re-reads it every time it opens. Clicking an entry runs `open -b com.microsoft.VSCode <dir>`.
+## Settings
+
+Everything lives in `~/.config/code-drop/config.json`; the menu re-reads it every time it opens.
+
+```json
+{
+  "language": "en",
+  "directories": ["/Users/me/projects/my-project"]
+}
+```
+
+`language` is `en` or `pt` (defaults to your system language) and affects both the menu and the CLI messages. Change it with `code-drop lang pt`, or edit the file (menu → *Open config file*). An old `dirs.json` is migrated automatically.
+
+ Clicking a directory in the menu runs `open -b com.microsoft.VSCode <dir>`.

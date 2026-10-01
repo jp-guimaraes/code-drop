@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CodeDrop
+Comment=Open your favorite directories in VS Code from the tray
+Exec=code-drop
+Icon=folder
+Terminal=false
+Categories=Utility;Development;
+X-GNOME-Autostart-enabled=true
